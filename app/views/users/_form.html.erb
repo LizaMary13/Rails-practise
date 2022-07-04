@@ -1,0 +1,27 @@
+<% if @user.errors.any? %>
+    <h3>The following errors prevented signup from being completed: </h3>
+        <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+<% end %>
+
+<%= form_with(model: @user, local: true) do |f| %>
+    <p>
+        <%= f.label :username %>
+        <%= f.text_field :username, placeholder: "Enter a username" %>
+    </p>
+    <p>
+        <%= f.label :email %>
+        <%= f.email_field :email, placeholder: "Enter your email" %>
+    </p>
+    <p>
+        <%=f.label :password %>
+        <%=f.password_field :password, placeholder: "Choose a password" %>
+    </p>
+    <p>
+        <%= f.submit "Sign Up" %>
+    </p>
+
+<% end %>
